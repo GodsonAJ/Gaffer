@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+  <!-- Local Font: DM Sans -->
+  <link rel="preload" href="assets/fonts/DM_Sans/static/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/DM_Sans/static/DMSans-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <title>Frontend Mentor | Character Counter</title>
+</head>
+
+<body class="dark">
+
+  <main class="app">
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="brand">
+        <!-- Logo-->
+        <img
+          src="./assets/images/logo-dark-theme.svg"
+          alt="Character Counter"
+          class="logo"
+          id="logo"
+        />
+      </div>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <img
+          src="./assets/images/icon-sun.svg"
+          alt="Toggle theme"
+          id="themeIcon"
+        />
+      </button>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Analyze your text<br />in real-time.</h1>
+    </section>
+
+    <!-- Text Input Card -->
+    <section class="text-card">
+      <textarea placeholder="Start typing here… (or paste your text)">
+Design is the silent ambassador of your brand. Simplicity is key to effective communication, creating clarity in every interaction.
+      </textarea>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+      <div class="options">
+        <label>
+          <input type="checkbox" />
+          Exclude Spaces
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Set Character Limit
+        </label>
+      </div>
+
+      <p class="reading-time">
+        Approx. reading time: &lt; 1 minute
+      </p>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat-card characters">
+        <strong>278</strong>
+        <span>Total Characters</span>
+      </div>
+
+      <div class="stat-card words">
+        <strong>39</strong>
+        <span>Word Count</span>
+      </div>
+
+      <div class="stat-card sentences">
+        <strong>04</strong>
+        <span>Sentence Count</span>
+      </div>
+    </section>
+
+    <!-- Letter Density -->
+    <section class="density">
+      <h2>Letter Density</h2>
+
+      <div class="density-row">
+        <span>E</span>
+        <div class="bar"><span></span></div>
+        <small>40 (16.06%)</small>
+      </div>
+
+      <div class="density-row">
+        <span>I</span>
+        <div class="bar"><span></span></div>
+        <small>29 (11.65%)</small>
+      </div>
+
+      <div class="density-row">
+        <span>T</span>
+        <div class="bar"><span></span></div>
+        <small>28 (11.24%)</small>
+      </div>
+
+      <a href="#" class="see-more">See more ↓</a>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
