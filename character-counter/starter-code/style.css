@@ -51,11 +51,35 @@ body.light {
   height: 28px;
 }
 
+/* =========================
+   THEME TOGGLE ICONS
+========================= */
+
+/* Default: LIGHT MODE */
+.icon-moon {
+  display: block;
+}
+
+.icon-sun {
+  display: none;
+}
+
+/* DARK MODE */
+body.dark .icon-moon {
+  display: none;
+}
+
+body.dark .icon-sun {
+  display: block;
+}
+
+/* Optional: make toggle button clean */
 .theme-toggle {
   background: none;
   border: none;
   cursor: pointer;
 }
+
 
 .theme-toggle img {
   width: 24px;

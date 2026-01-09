@@ -1,25 +1,54 @@
-const body = document.body;
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
-const logo = document.getElementById("logo");
+const textarea = document.querySelector("textarea");
 
-let isDark = true;
+const characterCountEl = document.querySelector(".characters strong");
+const wordCountEl = document.querySelector(".words strong");
+const sentenceCountEl = document.querySelector(".sentences strong");
+const readingTimeEl = document.querySelector(".reading-time");
 
-themeToggle.addEventListener("click", () => {
-  isDark = !isDark;
+const themeToggle = document.querySelector(".theme-toggle");
 
-  if (isDark) {
-    body.classList.remove("light");
-    body.classList.add("dark");
+// Restore theme
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+}
 
-    logo.src = "./assets/images/logo-dark-theme.svg";
-    themeIcon.src = "./assets/images/icon-sun.svg";
-  } else {
-    body.classList.remove("dark");
-    body.classList.add("light");
+textarea.addEventListener("input", updateTextStats);
+themeToggle.addEventListener("click", toggleTheme);
 
-    logo.src = "./assets/images/logo-light-theme.svg";
-    themeIcon.src = "./assets/images/icon-moon.svg";
-  }
-});
+function updateTextStats() {
+  const text = textarea.value;
 
+  updateCharacterCount(text);
+  updateWordCount(text);
+  updateSentenceCount(text);
+  updateReadingTime(text);
+}
+
+function updateCharacterCount(text) {
+  characterCountEl.textContent = text.length;
+}
+
+function updateWordCount(text) {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  wordCountEl.textContent = text.trim() === "" ? 0 : words.length;
+}
+
+function updateSentenceCount(text) {
+  const sentences = text.match(/[^.!?]+[.!?]+/g);
+  sentenceCountEl.textContent = sentences ? sentences.length : 0;
+}
+
+function updateReadingTime(text) {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  const minutes = Math.max(1, Math.ceil(words.length / 200));
+
+  readingTimeEl.textContent = `Approx. reading time: ${minutes} minute${minutes > 1 ? "s" : ""}`;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+}
